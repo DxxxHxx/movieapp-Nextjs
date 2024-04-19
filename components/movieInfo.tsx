@@ -1,9 +1,10 @@
 import React from "react";
-import { IMovie, URL } from "../app/(home)/page";
+import { IMovie } from "../app/(home)/page";
 import styles from "../styles/movieInfo.module.css";
+import { BASE_URL } from "../constants";
 
 export const getMovie = async (id: string) => {
-  const res = await fetch(`${URL}/${id}`);
+  const res = await fetch(`${BASE_URL}/${id}`);
   return res.json();
 };
 

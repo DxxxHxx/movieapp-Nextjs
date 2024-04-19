@@ -1,5 +1,6 @@
 import styles from "../../styles/home.module.css";
 import Movie from "../../components/movie";
+import { BASE_URL } from "../../constants";
 export interface IMovie {
   adult: boolean;
   backdrop_path: string;
@@ -17,14 +18,13 @@ export interface IMovie {
   vote_count: number;
 }
 
-export const metadata={
-  title:"Home"
-}
-export const URL = `https://nomad-movies.nomadcoders.workers.dev/movies`;
+export const metadata = {
+  title: "Home",
+};
 
 const getMovies = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  const res = fetch(URL);
+  const res = fetch(BASE_URL);
   return (await res).json();
 };
 
