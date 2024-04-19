@@ -1,5 +1,5 @@
-import Link from "next/link";
-
+import styles from "../../styles/home.module.css";
+import Movie from "../../components/movie";
 export interface IMovie {
   adult: boolean;
   backdrop_path: string;
@@ -17,6 +17,9 @@ export interface IMovie {
   vote_count: number;
 }
 
+export const metadata={
+  title:"Home"
+}
 export const URL = `https://nomad-movies.nomadcoders.workers.dev/movies`;
 
 const getMovies = async () => {
@@ -27,16 +30,17 @@ const getMovies = async () => {
 
 export default async function Home() {
   const movies: IMovie[] = await getMovies();
-  console.log(movies);
+  // console.log(movies);
   return (
-    <div>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
-          </li>
-        ))}
-      </ul>
+    <div className={styles.container}>
+      {movies.map((movie) => (
+        <Movie
+          key={movie.id}
+          id={movie.id}
+          poster_path={movie.poster_path}
+          title={movie.title}
+        />
+      ))}
     </div>
   );
 }
