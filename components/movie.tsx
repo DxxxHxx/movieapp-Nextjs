@@ -21,7 +21,7 @@ export default function Movie({
         src={poster_path}
         alt=""
       />
-      <Link href={`/movies/${id}`}>{title}</Link>
+      <Link prefetch href={`/movies/${id}`}>{title}</Link>
     </div>
   );
 }
